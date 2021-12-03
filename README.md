@@ -189,3 +189,8 @@ void scanf_array(int array[], int size)
 1. Napisz program, który wczyta od użytkownika tablicę 10-cio elementową, a następnie posortuje ją algorytmem [sortowania bąbelkowego](https://pl.wikipedia.org/wiki/Sortowanie_b%C4%85belkowe). Stwórz funkcję *bubble\_sort().*
 1. Napisz program, który wczyta od użytkownika tablicę 10-cio elementową, a następnie posortuje ją algorytmem [merge sort](https://pl.wikipedia.org/wiki/Sortowanie_przez_scalanie). Stwórz funkcję *merge\_sort().*
 1. Napisz program, który wczyta od użytkownika tablicę 10-cio elementową, a następnie posortuje ją algorytmem [quick sort](https://pl.m.wikipedia.org/wiki/Sortowanie_szybkie). Stwórz funkcję *quick\_sort().*
+
+***
+[Poprzednia część](https://github.com/CyberMALab/Pierwsze-wlasne-funkcje-i-rekurencja.git) | [Spis treści](https://github.com/CyberMALab/Wprowadzenie-do-programowania-w-j-zyku-ANSI-C.git) | [Następna część](https://github.com/CyberMALab/Comming-Soon.git)
+***
+&copy; Cyberspace Modelling and Analysis Laboratory
