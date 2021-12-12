@@ -7,14 +7,14 @@ Tablica to struktura danych pozwalająca przechować wiele elementów określone
 
 `int a[5]; /* 5-cio elementowa tablica liczb całkowitych */ `
 
-Taki zapis tworzy tablicę typu *int* o rozmiarze 5, czyli 5 umieszczonych kolejno w pamięci zmiennych do których można się dostać za pomocą zapisów a**[**0**]**, a**[**1**]**, a**[**2**]**, a**[**3**]**, a**[**4**]**. Warto zauważyć, że ostatni element n-elementowej tablicy ma indeks n-1, ponieważ indeksowanie zmiennych tablicowych zaczyna się od 0.
+Taki zapis tworzy tablicę typu *int* o rozmiarze 5, czyli 5 umieszczonych kolejno w pamięci zmiennych do których można się dostać za pomocą zapisów **a[0]**, **a[1]**, **a[2]**, **a[3]**, **a[4]**. Warto zauważyć, że ostatni element n-elementowej tablicy ma indeks n-1, ponieważ indeksowanie zmiennych tablicowych zaczyna się od 0.
 
 |`a[0]`|`a[1]`|`a[2]`|`a[3]`|`a[4]`|
 | :-: | :-: | :-: | :-: | :-: |
 
-Bardzo ważnym jest, rozmiar tablicy statycznej, nie może być podawany jako zmienna. Musi być on zadeklarowany jako stała liczba, podana w kodzie (zmienne const również nie mogą być użyte w tablicach statycznych). Jednak zasada ta tyczy się jedynie deklaracji tablicy. Aby dostać się do jej poszczególnych elementów, już można używać zmiennych, ale tylko całkowitoliczbowych.
+Bardzo ważnym jest to, że rozmiar tablicy statycznej, nie może być podawany jako zmienna. Musi być on zadeklarowany jako stała liczba, podana w kodzie (zmienne const również nie mogą być użyte jako rozmiar w tablicach statycznych). Jednak zasada ta tyczy się jedynie deklaracji tablicy. Aby dostać się do jej poszczególnych elementów, już można używać zmiennych, ale tylko całkowitoliczbowych.
 
-Operacje których można używać na tablicy, są identyczne jak operacje wykonywane na zmiennych, z tą różnicą, że aby dostać się do elementu tablicy należy wywołać jego nazwę oraz indeks, gdzie indeks można wywołać za pomocą zmiennej *int.*
+Operacje których można używać na elementach tablicy, są identyczne jak operacje wykonywane na zmiennych, z tą różnicą, że aby dostać się do elementu tablicy należy do jej nazwy dodać indeks, który można wywołać za pomocą zmiennej *int*.
 
 ```
 a[0] = 0;/* do pierwszego elementu tablicy */
@@ -22,7 +22,7 @@ i = 4;
 a[i] = 3;/* do i-tego (w tym przypadku piątego) elementu tablicy */
 ```
 
-Właściwość, która pozwala nam dostać się do elementu tablicy podając indeks jako zmienną. Daje to nam pewnego rodzaju synergię pomiędzy tablicami a pętlami, którą obrazuje przykład (8.0), gdzie zmienna sterująca pętli *for* jest indeksem tablicy, w każdym wykonaniu pętli.
+Właściwość, która pozwala nam dostać się do elementu tablicy podając indeks jako zmienną daje nam pewnego rodzaju synergię pomiędzy tablicami a pętlami. Jest to zobrazowane przez przykład (8.0), gdzie zmienna sterująca pętli *for* jest indeksem tablicy, w każdym wykonaniu pętli.
 
 *Przykład (8.0) Wczytanie i wypisanie wartości do tablicy za pomocą pętli*
 
@@ -37,7 +37,7 @@ int main() {
 	for(i=0; i<5; i++)
 	{
 		printf("Podaj element tablicy o indeksie %d:”, i);
-		scanf(" %d", &tablica[i]);
+		scanf("%d", &tablica[i]);
 	}
 	for(i=0; i<5; i++)
 	{
@@ -107,9 +107,9 @@ Deklarując tablicę można zainicjować jej początkowe wartości. W tym celu p
 | :-: | :-: | :-: | :-: |
 
 ## **Tworzenie funkcji obsługujących tablice**
-Podrozdział ten podchodzi do działania tablicami w funkcji tylko względem praktyki. Wyjaśnienie zjawiska jest zawarte w rozdziale 14 dla którego istotnym jest zrozumienie wskaźników (rozdział 12) oraz dynamicznego tworzenia tablic (rozdział 13).  
+Podrozdział ten podchodzi do działania z tablicami w funkcji tylko względem praktyki. Wyjaśnienie zjawiska jest zawarte w rozdziale 14 dla którego istotnym jest zrozumienie wskaźników (rozdział 12) oraz dynamicznego tworzenia tablic (rozdział 13).  
 
-Aby stworzyć funkcję, która wykona nam działanie na tablicy, należy zadeklarować parametr tej funkcji jako tablicę. Drugim istotnym parametrem, który należy podać, aby obsłużyć tablicę, jest jej rozmiar – uchroni to nasz program od nieoczekiwanych wyjść z tablicy w nieznany nam obszar pamięci. Bardzo ważną różnicą jest fakt, że operacje na parametrze-tablicy tak zadeklarowanej funkcji wpłyną na oryginalną tablicę. Aby wywołać funkcję operującą na tablicy, należy podać nazwę tablicy bez zawierania nawiasów kwadratowych (w praktyce jest to wskaźnik do pierwszego elementu tablicy).
+Aby stworzyć funkcję, która wykona nam działanie na tablicy, należy zadeklarować parametr tej funkcji jako tablicę. Drugim istotnym parametrem, który należy podać, aby obsłużyć tablicę, jest jej rozmiar – uchroni to nasz program od nieoczekiwanych wyjść z tablicy w nieznany nam obszar pamięci. Bardzo ważną różnicą jest fakt, że operacje na parametrze - tablicy tak zadeklarowanej funkcji wpłyną na oryginalną tablicę. Aby wywołać funkcję operującą na tablicy, należy podać nazwę tablicy bez zawierania nawiasów kwadratowych (w praktyce jest to wskaźnik do pierwszego elementu tablicy).
 
 *Przykład (8.5) funkcje operujące na tablicy*
 
@@ -123,7 +123,7 @@ void scan_array(int array[], int size);
 int main() 
 {
 	int tab[5];
-	scanf_array(tab,5);
+	scan_array(tab,5);
 	print_array(tab,5);
 	
 	return 0;
@@ -139,7 +139,7 @@ void print_array(int array[], int size)
 		}
 	}
 }
-void scanf_array(int array[], int size)
+void scan_array(int array[], int size)
 {
 	if(size>0)
 	{
@@ -147,7 +147,7 @@ void scanf_array(int array[], int size)
 		for(i=0; i<size; i++)
 		{
 			printf("Podaj element tablicy o indeksie %d: ", i);
-			scanf(" %d", &array[i]);
+			scanf("%d", &array[i]);
 		}
 	}
 }
@@ -177,7 +177,7 @@ void scanf_array(int array[], int size)
 >tablica[4] = 5
 
 ## **Zadania do samodzielnego wykonania:**
-1. Zadeklaruj tablicę jednowymiarową wybranymi wartościami (w kodzie). A następnie wyświetl zawartość tej tablicy za pomocą pętli *for, while* i *do... while,* tworząc odpowiednie funkcje.* 
+1. Zadeklaruj tablicę jednowymiarową wybranymi wartościami (w kodzie). A następnie wyświetl zawartość tej tablicy za pomocą pętli *for, while* i *do... while*, tworząc odpowiednie funkcje.
    1. od początku do końca tablicy,
    1. od końca do początku tablicy.
 1. Napisz program, który wczytuje do tablicy 10 liczb podanych przez użytkownika, a następnie wykonuje wymienione czynności. Podziel program na funkcje, tak aby każdy podpunkt realizowała przynajmniej jedna osobna funkcja.
